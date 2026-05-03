@@ -1,0 +1,92 @@
+Multi-Domain Support Triage Agent - AI Chat Transcript
+
+User Prompt:
+Build a terminal-based support triage agent that can handle support tickets across HackerRank, Claude, and Visa. The agent should classify issues, assess urgency and risk, retrieve relevant support documentation, decide whether to reply or escalate, and generate grounded responses.
+
+AI Response:
+Designed a terminal-based Python triage pipeline that:
+- Loads support issues from CSV
+- Normalizes issue text
+- Infers domain (HackerRank / Claude / Visa)
+- Classifies request type (product_issue, feature_request, bug, invalid)
+- Classifies product area
+- Assesses urgency and risk
+- Escalates high-risk issues
+- Retrieves relevant support guidance using BM25
+- Generates safe, grounded responses
+- Exports predictions.csv
+
+User Prompt:
+Provide the complete implementation code.
+
+AI Response:
+Generated a full Python implementation (triage.py) including:
+- CSV ingestion
+- Domain inference
+- Request classification
+- Risk scoring
+- BM25 retrieval
+- Reply vs escalate decision logic
+- Output CSV generation
+
+User Prompt:
+How do I run the project?
+
+AI Response:
+Provided setup and execution instructions:
+- Install dependencies with:
+  pip install pandas rank-bm25
+- Run:
+  python triage.py --input support_tickets.csv --output predictions.csv
+
+User Prompt:
+The output showed all rows as invalid.
+
+AI Response:
+Diagnosed CSV schema mismatch. Identified that the script expected lowercase column names while the dataset used:
+- Issue
+- Subject
+- Company
+
+Updated the code to use the correct column names.
+
+User Prompt:
+Permission denied while writing predictions.csv.
+
+AI Response:
+Diagnosed that predictions.csv was open in Excel and locked by Windows. Advised closing the file before rerunning.
+
+User Prompt:
+What files are required for submission?
+
+AI Response:
+Prepared final submission package:
+1. code.zip
+   - triage.py
+   - README.md
+2. predictions.csv
+3. log.txt
+
+User Prompt:
+Provide README and transcript content.
+
+AI Response:
+Generated:
+- README.md with setup, approach, and safety notes
+- log.txt containing the AI chat transcript summary
+
+Tools Used:
+- Python
+- pandas
+- rank-bm25
+
+Safety and Decision Logic:
+- Escalated sensitive issues such as fraud, billing disputes, security issues, and account compromise
+- Avoided unsupported claims
+- Used only corpus-grounded support responses
+- Escalated low-confidence retrieval cases
+
+Final Deliverables:
+- code.zip
+- predictions.csv
+- log.txt
